@@ -1,0 +1,133 @@
+Event 1: New User
+
+type = "new_user"
+content = "username"
+
+Success:
+
+groups: [Set<String>("Anupam", "Nathan", "Hojuland")]
+users: Set<String>('users')
+content: NULL
+sender, recipient, destination: NULL
+type = "ok_create_user"
+
+Update:
+
+groups: []
+users: Set<String>(new_user + existing)
+content = NULL
+sender, recipient, destination: NULL
+type = "ok_update_users"
+
+Error:
+
+groups: []
+users: {}
+content: "invalid username"
+type: "invalid_username"
+
+
+Send Message (Individual):
+
+groups = []
+users = {}
+content = "user message"
+sender = "curr_username"
+recipient = "dest_user"
+type = "indiv_message"
+
+Success:
+groups = {}
+users = {}
+sender = "username1"
+recipient = "username2"
+content = "user message"
+type = "message_ok"
+
+
+Group Message:
+
+groups = []
+users = {}
+content = "user message"
+sender = "curr_username"
+recipient = NULL
+type = "group_message"
+destinationGroup = 0
+
+Success:
+
+groups = []
+users = {}
+content = "user message"
+sender = "curr_username"
+recipient = NULL
+type = "ok_group_message"
+destinationGroup = 0
+
+
+Broadcast:
+
+group = []
+users = {}
+content = "message"
+sender = "curr_user"
+recipient = null
+type = "broadcast"
+
+Success:
+
+group = []
+users = {}
+content = "message"
+sender = "curr_user"
+recipient = null
+type = "ok_broadcast"
+
+
+Creating Group
+
+group = [{"username1", "username2"}]
+users = {}
+sender = "curr_username"
+recipient = NULL
+type = "new_group"
+
+Success:
+
+group = [Group() + existing_groups]
+users = {}
+sender = "curr_username"
+recipient = NULL
+type = "ok_new_group"
+
+Update:
+
+group = [Group() + existing_groups]
+users = {}
+sender = NULL
+recipient = NULL
+type = "update_new_group"
+
+Leave Users:
+group = []
+users = {}
+sender = "username"
+recipient = NULL
+type = "leave_user"
+
+Success:
+
+groups = []
+users = []
+sender = "username"
+recipient = NULL
+type = "ok_leave_user"
+
+Update:
+
+groups = []
+users = []
+sender = "username"
+recipient = NULL
+type = "update_leave_user"
